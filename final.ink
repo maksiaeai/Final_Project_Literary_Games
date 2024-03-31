@@ -6,9 +6,15 @@ VAR obsessed = 0
 
 == light ==
 
+You're on your way to your class's discussion section in the evening when you notice that green light on the side of the gym building again.  
+
+It's been giving you the creeps these past couple weeks, but this time, you're sure that there's something actually seriously wrong with it. 
+
+
+
 -> END
 
-== friendship_beginning ==
+== friendship ==
 
 -> END
 
@@ -17,7 +23,7 @@ VAR obsessed = 0
 VAR quiz_score = 3
 
 It's Friday. Today you have your weekly quiz in chemistry class. 
-You sit down, unsure of what exactly to expect but sure that you'll be fine. After all, you did study. 
+You sit down, unsure of what exactly to expect but sure that you'll be fine. After all, you did study. Somewhat. 
 
 The teaching assistant passes out the pieces of paper, asking everyone to please not turn it over until everyone has one. You do as instructed.
 
@@ -98,7 +104,11 @@ You answer:
 
 = quiz_mildly_obsessed
 
-// NOTE: give passage
+Something about this is very odd. 
+
+The questions made sense, but some of the answers... didn't. In fact, some of these answers didn't seem related to chemistry at all. To make matters worse, you were sure that most of the answers that did make sense were wrong too. Were there just no correct answers? Did you not study well enough? What should you do?
+
+Eventually, you decide to just do your best and write at least something down on the quiz. After all, you get a 25% change of getting each question correct, right?
 
 The first question reads: "Which of the following is an ionic bond?"
 
@@ -153,7 +163,7 @@ You answer:
 
 = quiz_healthy
 
-// NOTE: Give passage
+Oh, this looks easy. Thank God, honestly. You haven't studied much, but still these questions look totally doable. 
 
 The first question reads: "Which of the following is an ionic bond?"
 
@@ -207,13 +217,33 @@ You answer:
 
 = quiz_pass
 
+The next Monday, you get your quiz back.
+
+Oh, good, you passed. Not only did you pass, but you got a 100%. Phew. You're not sure if that was luck, or maybe you actually did study well enough, but you'll take it. 
+
 -> END
 
 = quiz_barely
 
+The next Monday, you get your quiz back. 
+
+You passed. Barely. It was unfortunate how unforgiving these quizzes were -- with only one question wrong, you got a 66%. That is passing, but still you feel incredibly disappointed. One question wrong? And get a D? That's not fair. Oh well. There's nothing you can do about it now. 
+
 -> END
 
 = quiz_fail
+
+The next Monday, you get your quiz back.
+
+Once you see the number on the paper, something sinks in your stomach. 
+
+You failed. 
+
+Not only that, but this was the last quiz of the semester. There goes your grade. No coming back from this one. You can only hope that you did well enough on the rest to get a passing score in the course. Why were the grades in this class set up this way, anyway? It wasn't fair. 
+
+Fighting back tears, you crumple the quiz up and shove it into your backpack. It seems wrong to just throw it away, even though there are no more quizzes left to study for. However, you clearly don't care enough about it to put in in your bag neatly. 
+
+This time, when the professor begins to speak and go over the answers, you don't even write them down for reference. It's over. 
 
 -> END
 

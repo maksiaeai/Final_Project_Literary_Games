@@ -1,24 +1,306 @@
 VAR obsessed = 0
+VAR grade = 8 // assume Yuliya barely passed the rest
+VAR eugenia_tolerance = 0 
+VAR logan_tolerance = 2 
+VAR abraham_tolerance = 0 
 
-== class ==
+-> class_4
 
--> END
+== class_4 ==
 
-== light ==
+// class 
+-> light_4
+
+== light_4 ==
+
+// light
+-> friendship_4
+
+== friendship_4 ==
+
+= logan
+-> quiz_4
+
+= eugenia
+-> quiz_4
+
+= abraham 
+-> quiz_4
+
+== quiz_4 ==
+
+// quiz 
+
+-> class_5
+
+== class_5 ==
+
+On Monday, you walk into chemistry class, as you've done every week this semester.
+
+Today, your teacher announces that this week, you'll be finishing up by learning about the applications of thermodynamics. Luckily, there is no final exam, so the last portion of your grade will be determined by how well you do on this last weekly quiz.
+
+Somehow, you think, that seems worse. 
+
+But everyone else seems happy about it, so you figure that maybe you're just wrong about it being worse. 
+
+Your professor begins by introducing the concept of entropy. That sounds familiar, but not in the way the professor explains it. Apparently, entropy is similar to "chaos". 
+
+You could relate to that. 
+
+Entropy is the measure of how "disordered" something is. Solids have the least amount of entropy, while gas has the most. Entropy also relates to the second law of thermodynamics -- which has two parts: first, when energy is converted or transferred, some of it is lost to the surroundings as heat. So while no energy was lost or created in the transfer (as per the first law of thermodynamics), the amount of usable energy has indeed decreased. 
+
+How does entropy relate? In a system such as this, with no surrounding interference, entropy will either stay the same or increase -- the generation of heat increases entropy. In spontaneous systems, the overall change in entropy must be greater than or equal to 0. 
+
+The only time entropy isn't above zero is when the system is at "absolute" zero -- zero degrees Kelvin, or -273.15 degrees Celsius. Nothing moves at absolute zero -- there is no disorder. Therefore, entropy is a constant zero...
+
+-> light_5
+
+== light_5 ==
 
 You're on your way to your class's discussion section in the evening when you notice that green light on the side of the gym building again.  
 
 It's been giving you the creeps these past couple weeks, but this time, you're sure that there's something actually seriously wrong with it. 
 
+Maybe trying to observe it will help you figure out what it is?
 
+{ 
+
+- obsessed > 0: // even just a little bit
+    -> light_obsessed
+- else: // healthy
+    -> light_healthy 
+    
+}
+
+= light_obsessed // even just a little bit
+
+* [Stare at it] 
+    ~ obsessed++
+    -> staring
+    
+* [Stare at it] 
+    ~ obsessed++
+    -> staring
+
+= light_healthy
+
+* [Stare at it]
+    ~ obsessed++
+    -> staring
+    
+* [Don't stare at it]
+
+Curiously, the urge to stare at the light doesn't feel all that overwhelming this time... which is odd, considering all that's happened, but you don't question it. Instead of dwelling on it too much, you decide to actually go to discussion.
+
+Discussion was fine. Going home was fine. Fascinatingly, the entire rest of the week was fine. Nothing else out of the ordinary happens for the rest of the week, and you don't need to ask any of your friends for help. 
+
+Thursday night, you go to bed just fine. 
+
+** [Wake up]
+
+-> quiz_5
+
+= staring
+
+You decide to stare at it. Just for a little bit. After all, you do have to go to discussion.
+
+* [Stare at it]
+
+Some time passes. 
+
+** [Stare at it]
+
+Some more time passes.
+
+*** [Stare at it]
+
+How long has it been?
+
+**** [Stare at it]
+
+The light is all-encompassing. Something within you stirs. 
+
+***** [Stare at it]
+
+Is it trying to tell you something?
+
+****** [Yes]
+~ obsessed++
+
+****** [No]
+
+Yes it is. 
+
+- You are sure that it's telling you something, but you don't know what it is.
+
+* [Wait some more]
+
+- Eventually, you figure it out. 
+
+* The light doesn't want you to go to discussion.
+
+** The light doesn't want you to pass this class.
+
+*** The light doesn't want you to graduate...
+
+**** ...Much less go to medical school.
+
+***** The light doesn't want you to succeed.
+
+****** The light doesn't want you to live. 
+
+******* The light will do whatever it takes to make you fail. 
+
+******** The light will do whatever it takes to make you die. 
+
+- What do you do?
+
+* [Let the light kill you]
+    ~ obsessed++
+-> kill_you
+
+* [Trick the light instead]
+    ~ obsessed++
+
+You decide to trick the light instead of letting it kill you. 
+
+Forget discussion. You have more important things to worry about. 
+
+- You turn the opposite direction from the building where discussion is held, and instead head towards the local pharmacy.
+
+If the light is going to try to kill you as long as you are alive, then, barring actually killing yourself, there's only one thing you can do:
+
+* You have to trick the light into thinking you're already dead. 
+
+- Your plan is simple. 
+
+If you pretend to die in front of the light, it won't bother you anymore. Maybe you'll finally appease it. 
+
+You don't have access to any weapons. But you do have access to the pharmacy. Medication can be weapon enough. Right?
+
+* [Right]
+
+-> overdose 
+
+* [Wait--]
+
+Wait a minute. This is ridiculous. You can't do this. It's too risky. 
+
+But the thought can't leave your head. Maybe it's how perfectly simple the plan seems, or maybe it's the light just trying to make it alluring, but as you continue walking, you feel as if you can't stop yourself. 
+
+You have to call someone. Someone has to help. You decide, quickly, to call...
+
+{ logan_tolerance > 0:
+    ** Logan
+        -> friendship_5.logan 
+}
+
+{ eugenia_tolerance > 0:
+    ** Eugenia
+        -> friendship_5.eugenia
+}
+
+{ abraham_tolerance > 0:
+    ** Abraham
+        -> friendship_5.abraham
+}
+
+// if none of your friends are available
+
+{ logan_tolerance + eugenia_tolerance + abraham_tolerance == 0:
+
+...no one. You open your contacts list, but stop as soon as you do. That's right. You've driven away all of your friends. 
+
+** No one is available. -> kill_you
+
+}
+
+= kill_you
+
+There's nothing you can do, you've realized. There's nothing you can do to make the light stop torturing you like this. 
+
+It will keep going, forever, following you and distracting you and consuming your every thought. 
+
+You might as well stop wasting time. You might as well stop it now. 
+
+* Stop it 
+
+** Stop it 
+
+*** Stop it  
+
+**** Stop it 
+
+***** Stop it
+
+You stopped it. You stopped everything. It's over. You died. 
 
 -> END
 
-== friendship ==
+= overdose
+
+You think about it for a moment. Right, yes, this makes sense. 
+
+Despite your nerves, the cashier makes no comment as you buy two bottles of over-the-counter painkillers. That should be enough. Not to actually kill you, but definitely to hurt. 
+
+You walk out, and go back to the suspicious light.
+
+No one else is around. 
+
+Despite the brightness, no one else can see you. 
+
+You set your plan into motion. However, you forgot something. You completely forgot that in order to survive an overdose, you need to immediately seek medical attention. 
+
+It's too late, once you start vomiting. You can't speak. You can't see. There's no way to use your phone. 
+
+And once again, no one else is around. 
+
+Not for the rest of the night. 
 
 -> END
 
-== quiz ==
+== friendship_5 ==
+
+= logan
+
+// Logan: if you refuse to go to the hospital, keeps an eye on you all night long, until the lights go away in the morning and you feel better. Encourages you to go to a doctor the next day anyway (DOCTOR ENDING)
+
+* [Let Logan take you to the hospital]
+
+// hospitalization ending. you miss the quiz :(
+
+-> semester_over
+
+* [Refuse to go to the hospital]
+
+// doctor ending
+
+-> quiz_5
+
+= eugenia 
+
+// Eugenia: immediately calls police (HOSPITALIZATION ENDING)
+
+-> police 
+
+= abraham 
+
+// Abraham: convinces you to go to hospital on your own or via police (HOSPITALIZATION ENDING)
+
+* [Let Abraham take you to the hospital]
+// hospitalization ending, you miss the quiz :(
+-> semester_over
+
+* [Refuse to go to the hospital]
+-> police 
+
+== police ==
+
+// the police come, and you are forcibly hospitalized 
+
+-> semester_over
+
+== quiz_5 ==
 
 VAR quiz_score = 3
 
@@ -32,15 +314,6 @@ Once the TA gives the go-ahead, you flip over your paper.
 { 
 
 - obsessed > 5: // very obsessed
-    -> quiz_very_obsessed
-- obsessed > 2 && obsessed < 5: // mildly obsessed
-    -> quiz_mildly_obsessed
-- obsessed < 3: // healthy
-    -> quiz_healthy
-    
-}
-
-= quiz_very_obsessed 
 
 Something is very, very wrong. 
 
@@ -52,57 +325,9 @@ You only have ten minutes to figure this out.
 
 Part of you wants to raise your hand and ask if there was a mistake, or a typo, or maybe you got the wrong quiz, or maybe it's a practical joke or something, but you think better of it and instead stare down at the piece of paper. 
 
-The first question reads: "Which of the following is an ionic bond?"
-
-You answer:
-
-* GHOST
-    quiz_score--
-* GHOST
-    quiz_score--
-* GHOST // correct
-    quiz_score++
-* GHOST 
-    quiz_score--
-
-- The second question reads: "Covalent bonds always form between nonmetals and..."
-
-You answer:
-
-* GHOST // correct
-    quiz_score++
-* GHOST 
-    quiz_score--
-* GHOST
-    quiz_score--
-* GHOST
-    quiz_score--
-
-- The third question reads: "Which of the following compounds has the highest melting point?"
-
-You answer:
-
-* GHOST
-    quiz_score--
-* GHOST // correct
-    quiz_score++
-* GHOST
-    quiz_score--
-* GHOST
-    quiz_score--
+    -> question_1
     
-- And with that, the quiz was over. 
-
-{ 
-- quiz_score > 2:
-        -> quiz_pass
-- quiz_score == 2:
-        -> quiz_barely
-- quiz_score < 2:
-        -> quiz_fail
-}
-
-= quiz_mildly_obsessed
+- obsessed > 2 && obsessed < 6: // mildly obsessed
 
 Something about this is very odd. 
 
@@ -110,108 +335,200 @@ The questions made sense, but some of the answers... didn't. In fact, some of th
 
 Eventually, you decide to just do your best and write at least something down on the quiz. After all, you get a 25% change of getting each question correct, right?
 
-The first question reads: "Which of the following is an ionic bond?"
-
-You answer:
-
-* HCl
-    quiz_score--
-* GHOST
-    quiz_score--
-* GHOST // correct
-    quiz_score++
-* H2O 
-    quiz_score--
+    -> question_1
     
-
-- The second question reads: "Covalent bonds always form between nonmetals and..."
-
-You answer:
-
-* Nonmetals // correct
-    quiz_score++
-* GHOST 
-    quiz_score--
-* GHOST
-    quiz_score--
-* Compounds
-    quiz_score--
-
-- The third question reads: "Which of the following compounds has the highest melting point?"
-
-You answer:
-
-* HCl
-    quiz_score--
-* GHOST // correct
-    quiz_score++
-* GHOST
-    quiz_score--
-* KN3
-    quiz_score--
+- obsessed < 3: // healthy
+    -> question_1
     
-- And with that, the quiz was over. 
-
-{ 
-- quiz_score > 2:
-        -> quiz_pass
-- quiz_score == 2:
-        -> quiz_barely
-- quiz_score < 2:
-        -> quiz_fail
 }
 
-= quiz_healthy
+= question_1 
 
-Oh, this looks easy. Thank God, honestly. You haven't studied much, but still these questions look totally doable. 
-
-The first question reads: "Which of the following is an ionic bond?"
+The first question reads: "At what temperature is entropy zero?"
 
 You answer:
 
-* HCl
-    quiz_score--
-* CH4
-    quiz_score--
-* NaCl // correct
-    quiz_score++
-* H2O 
-    quiz_score--
+{ - obsessed > 5:
+* GHOST
+    ~ quiz_score--
+    -> question_2
+* GHOST
+    ~ quiz_score--
+        -> question_2
 
-- The second question reads: "Covalent bonds always form between nonmetals and..."
+* GHOST // correct
+        -> question_2
 
-You answer:
+* GHOST 
+    ~ quiz_score--
+        -> question_2
 
-* Nonmetals // correct
-    quiz_score++
-* Metals 
-    quiz_score--
-* Metalloids
-    quiz_score--
-* Compounds
-    quiz_score--
+}
 
-- The third question reads: "Which of the following compounds has the highest melting point?"
+{ - obsessed > 2 && obsessed < 6: // mildly obsessed
 
-You answer:
+* 0 degrees Celsius
+    ~ quiz_score--
+        -> question_2
 
-* HCl
-    quiz_score--
-* MgO // correct
-    quiz_score++
-* KCl
-    quiz_score--
-* KN3
-    quiz_score--
+* GHOST
+    ~ quiz_score--
+        -> question_2
+
+* GHOST // correct
+        -> question_2
+
+* 273 Kelvin 
+    ~ quiz_score--
+        -> question_2
+
     
-- And with that, the quiz was over. 
+}
+
+{ - obsessed < 3:
+
+* 0 degrees Celsius
+    ~ quiz_score--
+            -> question_2
+
+* 0 degrees Fahrenheit 
+    ~ quiz_score--
+            -> question_2
+
+* 0 Kelvin // correct
+        -> question_2
+
+* 273 Kelvin
+    ~ quiz_score--
+        -> question_2
+}
+
+= question_2
+
+The second question reads: "Which statement best describes entropy's role in determining the spontaneity of a chemical reaction?"
+
+You answer:
+
+{ - obsessed > 5:
+
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score--
+    -> question_3
+}
+
+{ - obsessed > 2 && obsessed < 6: 
+
+
+* An increase in entropy can contribute to the spontaneity of a reaction because spontaneous reactions often increase disorder. // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score--
+    -> question_3
+* The higher the enthalpy, the more spontaneous the chemical reaction will be. 
+    ~ quiz_score--
+    -> question_3
+
+} 
+
+{ - obsessed < 3:
+
+
+* An increase in entropy can contribute to the spontaneity of a reaction because spontaneous reactions often increase disorder. // correct
+    -> question_3
+* Entropy is not relevant when considering the spontaneity of chemical reactions.
+    ~ quiz_score--
+    -> question_3
+* A decrease in entropy always prevents spontaneous chemical reactions from occurring.  
+    ~ quiz_score--
+    -> question_3
+* The higher the enthalpy, the more spontaneous the chemical reaction will be. 
+    ~ quiz_score--
+    -> question_3
+
+}
+
+= question_3
+
+The third question reads: "What type of process has an increase in entropy?"
+
+You answer:
+
+{ - obsessed > 5:
+
+* GHOST GHOST 
+    ~ quiz_score--
+    -> quiz_finish
+* GHOST GHOST  // correct
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score--
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score--
+    -> quiz_finish
+}
+
+{ - obsessed > 2 && obsessed < 6:
+
+* Nonspontaneous process
+    ~ quiz_score--
+    -> quiz_finish
+* GHOST GHOST
+    -> quiz_finish
+* GHOST GHOST
+    ~ quiz_score--
+    -> quiz_finish
+* Exothermic process
+    ~ quiz_score--
+    -> quiz_finish
+    
+}
+
+{ - obsessed < 2:
+
+* Nonspontaneous process
+    ~ quiz_score--
+    -> quiz_finish
+* Spontaneous process
+    -> quiz_finish
+* Endothermic process
+    ~ quiz_score--
+    -> quiz_finish
+* Exothermic process
+    ~ quiz_score--
+    -> quiz_finish
+    
+}
+
+    
+
+    
+= quiz_finish
+
+And with that, the quiz was over. 
 
 { 
 - quiz_score > 2:
+        ~ grade = grade + 3 
         -> quiz_pass
 - quiz_score == 2:
+    ~ grade = grade + 2
         -> quiz_barely
-- quiz_score < 2:
+- quiz_score == 1:
+    ~ grade++
+        -> quiz_fail
+- quiz_score < 1:
         -> quiz_fail
 }
 
@@ -221,7 +538,7 @@ The next Monday, you get your quiz back.
 
 Oh, good, you passed. Not only did you pass, but you got a 100%. Phew. You're not sure if that was luck, or maybe you actually did study well enough, but you'll take it. 
 
--> END
+-> semester_over
 
 = quiz_barely
 
@@ -229,7 +546,7 @@ The next Monday, you get your quiz back.
 
 You passed. Barely. It was unfortunate how unforgiving these quizzes were -- with only one question wrong, you got a 66%. That is passing, but still you feel incredibly disappointed. One question wrong? And get a D? That's not fair. Oh well. There's nothing you can do about it now. 
 
--> END
+-> semester_over
 
 = quiz_fail
 
@@ -244,6 +561,42 @@ Not only that, but this was the last quiz of the semester. There goes your grade
 Fighting back tears, you crumple the quiz up and shove it into your backpack. It seems wrong to just throw it away, even though there are no more quizzes left to study for. However, you clearly don't care enough about it to put in in your bag neatly. 
 
 This time, when the professor begins to speak and go over the answers, you don't even write them down for reference. It's over. 
+
+-> semester_over
+
+== semester_over ==
+
+Finally, the semester is over. 
+
+You did fine in your other classes. It was chemistry you were most worried about. After having gotten your quiz grade back, you have a fairly good idea of how well you've done in the class.
+
+After doing some calculations, you look at your final score, and... <> { 
+- grade > 10: -> class_pass
+- grade == 10: -> class_barely
+- grade < 10: -> class_fail
+}
+
+= class_pass
+
+you passed. Thank God, you passed. After all that's happened, you're surprised you even did so well. Wow. All those sleepless nights must have been worth it. 
+
+Sighing a deep breath, you smile to yourself. You passed. Well done. 
+
+-> END
+
+= class_barely
+
+you barely passed. But thank God, you passed. After all that's happened, that's the most you could hope for, honestly. Part of you is somewhat disappointed that you didn't do better, but with everything that the lights have done to you, it's a miracle you passed at all. It will be difficult to explain to your parents, but... you'll make it through. 
+
+-> END
+
+= class_fail
+
+you failed. 
+
+Oh God, you failed. 
+
+What are you going to do? You begin to spiral. You failed chemistry. You don't really have an excuse, either, you think to yourself. It's not like anybody's going to believe you about the lights. You failed, and it's all your fault. You have to take chemistry again, which will put you back a semester. Regardless, you'll never get into medical school with a grade like this, even if you ace it the next semester. Who fails general chemistry? It's over. It's over. 
 
 -> END
 

@@ -1,0 +1,89 @@
+The first question reads: "Which of the following is an ionic bond?"
+
+You answer:
+
+* HCl
+    quiz_score--
+* CH4
+    quiz_score--
+* NaCl // correct
+    quiz_score++
+* H2O 
+    quiz_score--
+
+- The second question reads: "Covalent bonds always form between nonmetals and..."
+
+You answer:
+
+* Nonmetals // correct
+    quiz_score++
+* Metals 
+    quiz_score--
+* Metalloids
+    quiz_score--
+* Compounds
+    quiz_score--
+
+- The third question reads: "Which of the following compounds has the highest melting point?"
+
+You answer:
+
+* HCl
+    quiz_score--
+* MgO // correct
+    quiz_score++
+* KCl
+    quiz_score--
+* KN3
+    quiz_score--
+	
+
+
+Something about this is very odd. 
+
+The questions made sense, but some of the answers... didn't. In fact, some of these answers didn't seem related to chemistry at all. To make matters worse, you were sure that most of the answers that did make sense were wrong too. Were there just no correct answers? Did you not study well enough? What should you do?
+
+Eventually, you decide to just do your best and write at least something down on the quiz. After all, you get a 25% change of getting each question correct, right?
+
+The first question reads: "Which of the following is an ionic bond?"
+
+You answer:
+
+* HCl
+    quiz_score--
+* GHOST
+    quiz_score--
+* GHOST // correct
+    quiz_score++
+* H2O 
+    quiz_score--
+    
+
+- The second question reads: "Covalent bonds always form between nonmetals and..."
+
+You answer:
+
+* Nonmetals // correct
+    quiz_score++
+* GHOST 
+    quiz_score--
+* GHOST
+    quiz_score--
+* Compounds
+    quiz_score--
+
+- The third question reads: "Which of the following compounds has the highest melting point?"
+
+You answer:
+
+* HCl
+    quiz_score--
+* GHOST // correct
+    quiz_score++
+* GHOST
+    quiz_score--
+* KN3
+    quiz_score--
+	
+	
+	

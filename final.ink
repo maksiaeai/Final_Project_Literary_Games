@@ -1,21 +1,73 @@
-VAR obsessed = 0
-VAR grade = 8 // assume Yuliya barely passed the rest
-VAR eugenia_tolerance = 0 
-VAR logan_tolerance = 2 
-VAR abraham_tolerance = 0 
+VAR obsessed = 3 
+VAR grade = 6 // assume Yuliya barely passed the rest
+VAR eugenia_tolerance = 0 // 3 
+VAR logan_tolerance = 4  // 4 
+VAR abraham_tolerance = 0 // 2
 
 -> class_4
 
 == class_4 ==
 
-// class 
+// class. acids and bases pt. 2 
 -> light_4
 
 == light_4 ==
 
 // light
+// it's raining. the streetlights are out during the day. On Friday! So you can't take the quiz :( Unless...
+
+{ logan_tolerance > 0:
+    * Logan
+        -> friendship_4.logan 
+}
+
+{ eugenia_tolerance > 0:
+    * Eugenia
+        -> friendship_4.eugenia
+}
+
+{ abraham_tolerance > 0:
+    * Abraham
+        -> friendship_4.abraham
+}
+
+* Don't call anyone
+    -> alone
+// if none of your friends are available
+
+// { logan_tolerance + eugenia_tolerance + abraham_tolerance == 0:
+
+// // no one is available and you go to class alone 
+// -> alone
+
+// }
+
 -> friendship_4
 
+// alone? stay in == light_4 ==
+= alone 
+
+~ obsessed += 2
+
+// you go to classes alone 
+// do you make it to class though? not if you're obsessed
+
+{ 
+
+- obsessed > 5: // you miss the quiz
+
+    -> class_5
+
+- obsessed > 2 && obsessed < 6: // you go to the quiz, but good luck 
+
+    -> quiz_4
+    
+- obsessed < 3: // you go to the quiz and probably do fine. How did you do this?
+
+    -> quiz_4
+
+}
+    
 == friendship_4 ==
 
 = logan
@@ -29,8 +81,219 @@ VAR abraham_tolerance = 0
 
 == quiz_4 ==
 
-// quiz 
+VAR quiz_score_4 = 3
 
+// quiz introduction 
+
+{ 
+
+- obsessed > 5: // very obsessed
+
+    -> question_1
+    
+- obsessed > 2 && obsessed < 6: // mildly obsessed
+
+    -> question_1
+    
+- obsessed < 3: // healthy
+    -> question_1
+    
+}
+
+= question_1 
+
+// question 1
+
+{ 
+- obsessed > 5: // MUST BE HERE. MUST INCLUDE NEW LINE BEFORE SWITCH STATEMENT
+
+* GHOST
+    ~ quiz_score_4--
+    -> question_2
+* GHOST
+    ~ quiz_score_4--
+        -> question_2
+
+* GHOST // correct
+        -> question_2
+
+* GHOST 
+    ~ quiz_score_4--
+        -> question_2
+
+- obsessed > 2 && obsessed < 6: // mildly obsessed
+
+* !wrong answer 
+    ~ quiz_score_4--
+        -> question_2
+
+* GHOST
+    ~ quiz_score_4--
+        -> question_2
+
+* GHOST // correct
+        -> question_2
+
+* !wrong answer
+    ~ quiz_score_4--
+        -> question_2
+
+    
+- obsessed < 3:
+
+* !wrong answer
+    ~ quiz_score_4--
+            -> question_2
+
+* !wrong answer
+    ~ quiz_score_4--
+            -> question_2
+
+* !correct answer // correct
+        -> question_2
+
+* !wrong answer
+    ~ quiz_score_4--
+        -> question_2
+}
+
+= question_2
+
+// question 2
+
+You answer:
+
+{ 
+
+- obsessed > 5:
+
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_4--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_4--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_4--
+    -> question_3
+
+- obsessed > 2 && obsessed < 6: 
+
+
+* !correct answer // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_4--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_4--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_4--
+    -> question_3
+
+- obsessed < 3:
+
+
+* !correct answer // correct
+    -> question_3
+* !wrong answer
+    ~ quiz_score_4--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_4--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_4--
+    -> question_3
+
+}
+
+= question_3
+
+// question 3
+
+You answer:
+
+{ 
+
+- obsessed > 5:
+
+* GHOST GHOST 
+    ~ quiz_score_4--
+    -> quiz_finish
+* GHOST GHOST  // correct
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score_4--
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score_4--
+    -> quiz_finish
+- obsessed > 2 && obsessed < 6:
+
+* !wrong answer
+    ~ quiz_score_4--
+    -> quiz_finish
+* GHOST GHOST
+    -> quiz_finish
+* GHOST GHOST
+    ~ quiz_score_4--
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_4--
+    -> quiz_finish
+    
+- obsessed < 2:
+
+* !wrong answer
+    ~ quiz_score_4--
+    -> quiz_finish
+* !correct answer
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_4--
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_4--
+    -> quiz_finish
+    
+}
+    
+= quiz_finish
+
+And with that, the quiz was over. 
+
+{ 
+- quiz_score_4 > 2:
+        ~ grade = grade + 3 
+        -> quiz_pass
+- quiz_score_4 == 2:
+    ~ grade = grade + 2
+        -> quiz_barely
+- quiz_score_4 == 1:
+    ~ grade++
+        -> quiz_fail
+- quiz_score_4 < 1:
+        -> quiz_fail
+}
+
+= quiz_pass
+
+// pass 
+
+-> class_5
+
+= quiz_barely
+
+// barely passed 
+-> class_5
+
+= quiz_fail
+
+// fail the quiz
 -> class_5
 
 == class_5 ==
@@ -302,7 +565,7 @@ Not for the rest of the night.
 
 == quiz_5 ==
 
-VAR quiz_score = 3
+VAR quiz_score_5 = 3
 
 It's Friday. Today you have your weekly quiz in chemistry class. 
 You sit down, unsure of what exactly to expect but sure that you'll be fine. After all, you did study. Somewhat. 
@@ -348,58 +611,54 @@ The first question reads: "At what temperature is entropy zero?"
 
 You answer:
 
-{ - obsessed > 5:
+{ 
+- obsessed > 5:
 * GHOST
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_2
 * GHOST
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 
 * GHOST // correct
         -> question_2
 
 * GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 
-}
-
-{ - obsessed > 2 && obsessed < 6: // mildly obsessed
+- obsessed > 2 && obsessed < 6: // mildly obsessed
 
 * 0 degrees Celsius
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 
 * GHOST
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 
 * GHOST // correct
         -> question_2
 
 * 273 Kelvin 
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 
-    
-}
-
-{ - obsessed < 3:
+- else:
 
 * 0 degrees Celsius
-    ~ quiz_score--
+    ~ quiz_score_5--
             -> question_2
 
 * 0 degrees Fahrenheit 
-    ~ quiz_score--
+    ~ quiz_score_5--
             -> question_2
 
 * 0 Kelvin // correct
         -> question_2
 
 * 273 Kelvin
-    ~ quiz_score--
+    ~ quiz_score_5--
         -> question_2
 }
 
@@ -409,51 +668,49 @@ The second question reads: "Which statement best describes entropy's role in det
 
 You answer:
 
-{ - obsessed > 5:
+{ 
+- obsessed > 5:
 
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST // correct
     -> question_3
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
-}
-
-{ - obsessed > 2 && obsessed < 6: 
+    
+- obsessed > 2 && obsessed < 6: 
 
 
 * An increase in entropy can contribute to the spontaneity of a reaction because spontaneous reactions often increase disorder. // correct
     -> question_3
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * The higher the enthalpy, the more spontaneous the chemical reaction will be. 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 
-} 
-
-{ - obsessed < 3:
+- obsessed < 3:
 
 
 * An increase in entropy can contribute to the spontaneity of a reaction because spontaneous reactions often increase disorder. // correct
     -> question_3
 * Entropy is not relevant when considering the spontaneity of chemical reactions.
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * A decrease in entropy always prevents spontaneous chemical reactions from occurring.  
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 * The higher the enthalpy, the more spontaneous the chemical reaction will be. 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> question_3
 
 }
@@ -464,49 +721,47 @@ The third question reads: "What type of process has an increase in entropy?"
 
 You answer:
 
-{ - obsessed > 5:
+{ 
+- obsessed > 5:
 
 * GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * GHOST GHOST  // correct
     -> quiz_finish
 * GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * GHOST GHOST 
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
-}
 
-{ - obsessed > 2 && obsessed < 6:
+- obsessed > 2 && obsessed < 6:
 
 * Nonspontaneous process
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * GHOST GHOST
     -> quiz_finish
 * GHOST GHOST
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * Exothermic process
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
     
-}
-
-{ - obsessed < 2:
+- obsessed < 2:
 
 * Nonspontaneous process
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * Spontaneous process
     -> quiz_finish
 * Endothermic process
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
 * Exothermic process
-    ~ quiz_score--
+    ~ quiz_score_5--
     -> quiz_finish
     
 }
@@ -519,16 +774,16 @@ You answer:
 And with that, the quiz was over. 
 
 { 
-- quiz_score > 2:
+- quiz_score_5 > 2:
         ~ grade = grade + 3 
         -> quiz_pass
-- quiz_score == 2:
+- quiz_score_5 == 2:
     ~ grade = grade + 2
         -> quiz_barely
-- quiz_score == 1:
+- quiz_score_5 == 1:
     ~ grade++
         -> quiz_fail
-- quiz_score < 1:
+- quiz_score_5 < 1:
         -> quiz_fail
 }
 

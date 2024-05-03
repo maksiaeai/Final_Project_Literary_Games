@@ -4,6 +4,22 @@ VAR eugenia_tolerance = 0 // 3
 VAR logan_tolerance = 4  // 4 
 VAR abraham_tolerance = 0 // 2
 
+-> class_3
+
+== class_3 ==
+
+-> light_3
+
+== light_3 == // dining hall has suspicious lights, you cannot get food
+
+-> friendship_3
+
+== friendship_3 ==
+
+-> quiz_3
+
+== quiz_3 == 
+
 -> class_4
 
 == class_4 ==
@@ -85,20 +101,7 @@ VAR quiz_score_4 = 3
 
 // quiz introduction 
 
-{ 
-
-- obsessed > 5: // very obsessed
-
-    -> question_1
-    
-- obsessed > 2 && obsessed < 6: // mildly obsessed
-
-    -> question_1
-    
-- obsessed < 3: // healthy
-    -> question_1
-    
-}
+-> question_1
 
 = question_1 
 

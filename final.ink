@@ -1,8 +1,9 @@
-VAR obsessed = 3 
+VAR obsessed = 0
 VAR grade = 6 // assume Yuliya barely passed the rest
 VAR eugenia_tolerance = 3 // 3 
 VAR logan_tolerance = 4  // 4 
 VAR abraham_tolerance = 2 // 2
+VAR money = 25
 
 -> class_3
 
@@ -14,17 +15,17 @@ VAR abraham_tolerance = 2 // 2
 
 { logan_tolerance > 0:
     * Logan
-        -> friendship_4.logan 
+        -> friendship_3.logan 
 }
 
 { eugenia_tolerance > 0:
     * Eugenia
-        -> friendship_4.eugenia
+        -> friendship_3.eugenia
 }
 
 { abraham_tolerance > 0:
     * Abraham
-        -> friendship_4.abraham
+        -> friendship_3.abraham
 }
 
 * [Don't call anyone]
@@ -35,14 +36,26 @@ VAR abraham_tolerance = 2 // 2
 ~ obsessed += 2 
 
 // buy food and get it delivered if you have the money
-// just go into the dining hall anyway
-// starve 
+{
+- money > 20:
+    * [Order takeout]
+    ~ money -= 21
+    -> quiz_3
+}
 
-{ 
+// just go into the dining hall anyway
+* [Go to the dining hall anyway]
+~ obsessed += 5 
+
+// starve 
+* [Don't eat dinner]
+~ obsessed += 3
+
+- { 
 
 - obsessed > 5: // you miss the quiz
 
-    -> quiz_3
+    -> class_4
 
 - obsessed > 2 && obsessed < 6: // you go to the quiz, but good luck 
 
@@ -63,13 +76,58 @@ VAR abraham_tolerance = 2 // 2
 
 = logan 
 
+* [Ask Logan to buy you food]
+~ logan_tolerance -= 3 
+
+-> quiz_3
+
+{ 
+- money > 19:
+    * [Buy your own food, and ask Logan to deliver it]
+    ~ logan_tolerance -= 2 
+    ~ money -= 20
+
+-> quiz_3
+}
+
+* [Ask Logan to go with you to the dining hall]
+~ logan_tolerance--
+
 -> quiz_3
 
 = eugenia 
 
+* [Ask Eugenia to buy you food]
+~ eugenia_tolerance -= 3 
+
+-> quiz_3
+
+* [Buy your own food, and ask Eugenia to deliver it]
+~ eugenia_tolerance -= 2 
+~ money -= 20
+
+-> quiz_3
+
+* [Ask Logan to go with you to the dining hall]
+~ eugenia_tolerance--
+
 -> quiz_3
 
 = abraham
+
+* [Ask Abraham to buy you food]
+~ abraham_tolerance -= 3 
+
+-> quiz_3
+
+* [Buy your own food, and ask Abraham to deliver it]
+~ abraham_tolerance -= 2 
+~ money -= 20
+
+-> quiz_3
+
+* [Ask Logan to go with you to the dining hall]
+~ abraham_tolerance--
 
 -> quiz_3
 

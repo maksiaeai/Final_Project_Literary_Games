@@ -1,8 +1,8 @@
 VAR obsessed = 3 
 VAR grade = 6 // assume Yuliya barely passed the rest
-VAR eugenia_tolerance = 0 // 3 
+VAR eugenia_tolerance = 3 // 3 
 VAR logan_tolerance = 4  // 4 
-VAR abraham_tolerance = 0 // 2
+VAR abraham_tolerance = 2 // 2
 
 -> class_3
 
@@ -12,13 +12,269 @@ VAR abraham_tolerance = 0 // 2
 
 == light_3 == // dining hall has suspicious lights, you cannot get food
 
--> friendship_3
+{ logan_tolerance > 0:
+    * Logan
+        -> friendship_4.logan 
+}
+
+{ eugenia_tolerance > 0:
+    * Eugenia
+        -> friendship_4.eugenia
+}
+
+{ abraham_tolerance > 0:
+    * Abraham
+        -> friendship_4.abraham
+}
+
+* [Don't call anyone]
+-> alone
+
+= alone
+
+~ obsessed += 2 
+
+// buy food and get it delivered if you have the money
+// just go into the dining hall anyway
+// starve 
+
+{ 
+
+- obsessed > 5: // you miss the quiz
+
+    -> quiz_3
+
+- obsessed > 2 && obsessed < 6: // you go to the quiz, but good luck 
+
+    -> quiz_3
+    
+- obsessed < 3: // you go to the quiz and probably do fine. How did you do this?
+
+    -> quiz_3
+
+}
+
 
 == friendship_3 ==
+
+// ask to buy food (tolerance - 3)
+// ask to deliver food that you bought (tolerance - 2)
+// ask to go with you to dining hall (tolerance - 1)
+
+= logan 
+
+-> quiz_3
+
+= eugenia 
+
+-> quiz_3
+
+= abraham
 
 -> quiz_3
 
 == quiz_3 == 
+
+VAR quiz_score_3 = 3
+
+// quiz introduction 
+
+-> question_1
+
+= question_1 
+
+// question 1
+
+{ 
+- obsessed > 5: // MUST BE HERE. MUST INCLUDE NEW LINE BEFORE SWITCH STATEMENT
+
+* GHOST
+    ~ quiz_score_3--
+    -> question_2
+* GHOST
+    ~ quiz_score_3--
+        -> question_2
+
+* GHOST // correct
+        -> question_2
+
+* GHOST 
+    ~ quiz_score_3--
+        -> question_2
+
+- obsessed > 2 && obsessed < 6: // mildly obsessed
+
+* !wrong answer 
+    ~ quiz_score_3--
+        -> question_2
+
+* GHOST
+    ~ quiz_score_3--
+        -> question_2
+
+* GHOST // correct
+        -> question_2
+
+* !wrong answer
+    ~ quiz_score_3--
+        -> question_2
+
+    
+- obsessed < 3:
+
+* !wrong answer
+    ~ quiz_score_3--
+            -> question_2
+
+* !wrong answer
+    ~ quiz_score_3--
+            -> question_2
+
+* !correct answer // correct
+        -> question_2
+
+* !wrong answer
+    ~ quiz_score_3--
+        -> question_2
+}
+
+= question_2
+
+// question 2
+
+You answer:
+
+{ 
+
+- obsessed > 5:
+
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_3--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_3--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_3--
+    -> question_3
+
+- obsessed > 2 && obsessed < 6: 
+
+
+* !correct answer // correct
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_3--
+    -> question_3
+* GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST GHOST 
+    ~ quiz_score_3--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_3--
+    -> question_3
+
+- obsessed < 3:
+
+
+* !correct answer // correct
+    -> question_3
+* !wrong answer
+    ~ quiz_score_3--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_3--
+    -> question_3
+* !wrong answer
+    ~ quiz_score_3--
+    -> question_3
+
+}
+
+= question_3
+
+// question 3
+
+You answer:
+
+{ 
+
+- obsessed > 5:
+
+* GHOST GHOST 
+    ~ quiz_score_3--
+    -> quiz_finish
+* GHOST GHOST  // correct
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score_3--
+    -> quiz_finish
+* GHOST GHOST 
+    ~ quiz_score_3--
+    -> quiz_finish
+- obsessed > 2 && obsessed < 6:
+
+* !wrong answer
+    ~ quiz_score_3--
+    -> quiz_finish
+* GHOST GHOST
+    -> quiz_finish
+* GHOST GHOST
+    ~ quiz_score_3--
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_3--
+    -> quiz_finish
+    
+- obsessed < 2:
+
+* !wrong answer
+    ~ quiz_score_3--
+    -> quiz_finish
+* !correct answer
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_3--
+    -> quiz_finish
+* !wrong answer
+    ~ quiz_score_3--
+    -> quiz_finish
+    
+}
+    
+= quiz_finish
+
+And with that, the quiz was over. 
+
+{ 
+- quiz_score_3 > 2:
+        ~ grade = grade + 3 
+        -> quiz_pass
+- quiz_score_3 == 2:
+    ~ grade = grade + 2
+        -> quiz_barely
+- quiz_score_3 == 1:
+    ~ grade++
+        -> quiz_fail
+- quiz_score_3 < 1:
+        -> quiz_fail
+}
+
+= quiz_pass
+
+// pass 
+
+-> class_4
+
+= quiz_barely
+
+// barely passed 
+-> class_4
+
+= quiz_fail
+
+// fail the quiz
 
 -> class_4
 
@@ -58,8 +314,6 @@ VAR abraham_tolerance = 0 // 2
 
 // }
 
--> friendship_4
-
 // alone? stay in == light_4 ==
 = alone 
 
@@ -86,14 +340,35 @@ VAR abraham_tolerance = 0 // 2
     
 == friendship_4 ==
 
-= logan
+= logan // does not inconvenience him at all, he's just lazy
+
+* [Ask Logan to walk with you anyway]
+~ logan_tolerance--
 -> quiz_4
 
-= eugenia
+* [Believe Logan when he says it's inconvenient]
+~ obsessed += 2
+-> light_4 // opportunity to ask more friends?
+
+= eugenia // this inconveniences her greatly, because she would have to miss class
+
+* [Ask Eugenia to walk with you anyway]
+~ eugenia_tolerance -= 2
 -> quiz_4
 
-= abraham 
+* [Decide not to inconvenience Eugenia]
+~ obsessed += 2
+-> light_4 // opportunity to ask more friends?
+
+= abraham // somewhat inconveniences him, but he pretends like it doesn't
+
+* [Ask Abraham to walk with you anyway]
+~ abraham_tolerance--
 -> quiz_4
+
+* [Don't believe Abraham when he says it's not inconvenient]
+~ obsessed +=2 
+-> light_4
 
 == quiz_4 ==
 

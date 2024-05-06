@@ -1,5 +1,5 @@
 VAR obsessed = 0
-VAR grade = 6 // assume Yuliya barely passed the rest
+VAR grade = 4 // assume Yuliya barely passed the rest
 VAR eugenia_tolerance = 3 // 3 
 VAR logan_tolerance = 4  // 4 
 VAR abraham_tolerance = 2 // 2
@@ -878,13 +878,13 @@ Not for the rest of the night.
 
 = eugenia 
 
-// Eugenia: immediately calls police (HOSPITALIZATION ENDING)
+// Eugenia: waits until you get home, says that she'll be there, and then immediately calls police (HOSPITALIZATION ENDING)
 
 -> police 
 
 = abraham 
 
-// Abraham: convinces you to go to hospital on your own or via police (HOSPITALIZATION ENDING)
+// Abraham: waits until you get home, convinces you to go to hospital on your own or via police (HOSPITALIZATION ENDING)
 
 * [Let Abraham take you to the hospital]
 // hospitalization ending, you miss the quiz :(
@@ -896,6 +896,132 @@ Not for the rest of the night.
 == police ==
 
 // the police come, and you are forcibly hospitalized 
+You hear the sound of knocking at your door. 
+
+* [Open the door]
+-> open
+
+* [Don't open the door]
+-> no_open
+
+= open
+
+To your surprise, when you open the door, you see police.
+
+-> arrest
+
+= no_open
+
+"Police! Open up," a voice on the other side of the door says.
+
+Oh God. Police? Why would the police be at your door?
+
+You don't know what you did wrong. But, figuring that you would rather not be hit with a "resisting arrest" charge, you decide to open the door.
+
+Two officers stand before you. 
+
+-> arrest
+
+= arrest
+
+"Are you Yuliya Pavlova?" One of the officers asks.
+
+You would rather not get in trouble for lying.
+
+* "Yes."
+
+- "One of your friends has expressed some concerns about you. May we come in?"
+
+Oh, shoot. Was this <> { 
+- friendship_5.abraham: Abraham's 
+- else: Eugenia's 
+} <> fault? 
+
+Once again, you decide that cooperation would be the best option for you.
+
+* "Yes."
+
+- The police officers come into your room. One of them poses the question: "Have you felt like hurting yourself lately?"
+
+
+* { obsessed < 3} "No." 
+
+And that was true, technically. You didn't really want to hurt yourself. It was just the lights that were giving you no choice. 
+
+* "Well..."
+
+- The officer raises her eyebrow. 
+
+* "Well I mean, I don't actually want to hurt myself."
+
+- "Your friend <> { 
+- friendship_5.abraham: Abraham 
+- else: Eugenia
+} <> said otherwise."
+
+You're in a corner. 
+
+* { obsessed < 3} "<>{ 
+- friendship_5.abraham: He 
+- else: She
+} <> misunderstood me. I don't want to hurt myself."
+
+"Are you sure?" The officer asks.
+
+** "I'm sure."
+
+The officers look at each other. Outside of <> { 
+- friendship_5.abraham: Abraham's 
+- else: Eugenia's 
+} <> word, they don't actually have any evidence to forcibly hospitalize you. One of them stands up. "Well," he says, and takes out a business card, "if you feel any differently later, here is a crisis line number."
+
+You keep in your sigh of relief, and smile at him instead as you take the card. "Thank you."
+
+"Have a good night," the second officer says, and they leave your room.
+
+Once the door closes, you let your sigh escape. 
+
+-> quiz_5
+
+* "I did say that I might. But it's not something I actually want to do."
+
+- "You need to keep your story straight," the officer warns. 
+
+* "I am. I don't want to hurt myself."
+
+** "It just feels like I don't have any choice."
+
+- "And why is that?" The second officer asks.
+
+You realize now that you can't talk your way out of this. You can't explain anything about the lights. You'll look crazy. 
+
+* "What's going to happen to me?"
+
+- "You're not in any trouble," the first officer assures you. "We're just here to take you to the hospital."
+
+Well, you figure, there is no argument you can give that will get you out of this.
+
+"The only question now is," that same officer explains, "will you allow us to take you to the hospital voluntarily, or will we have to take you involuntarily?"
+
+* [Allow the police to take you]
+
+"I'll go."
+
+Standing up to follow them, you go to the hospital voluntarily...
+
+...But you miss the quiz. 
+
+-> semester_over
+
+* [Don't allow the police to take you]
+
+"I don't want to go to the hospital."
+
+"Fine." The same officer says. "So we'll take you involuntarily."
+
+Despite your insistence that you don't want to go to the hospital, you don't resist when they put handcuffs on you and escort you to the police car. 
+
+You are involuntarily hospitalized. And you miss the quiz.
 
 -> semester_over
 
@@ -1034,7 +1160,7 @@ You answer:
     ~ quiz_score_5--
     -> question_3
 
-- obsessed < 3:
+- else:
 
 
 * An increase in entropy can contribute to the spontaneity of a reaction because spontaneous reactions often increase disorder. // correct
@@ -1086,7 +1212,7 @@ You answer:
     ~ quiz_score_5--
     -> quiz_finish
     
-- obsessed < 2:
+- else:
 
 * Nonspontaneous process
     ~ quiz_score_5--

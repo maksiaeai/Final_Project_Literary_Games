@@ -656,7 +656,7 @@ The only time entropy isn't above zero is when the system is at "absolute" zero 
 
 == light_5 ==
 
-You're on your way to your class's discussion section in the evening when you notice that green light on the side of the gym building again.  
+You're on your way to your class's discussion section in the evening on Wednesday when you notice that green light on the side of the gym building again.  
 
 It's been giving you the creeps these past couple weeks, but this time, you're sure that there's something actually seriously wrong with it. 
 
@@ -862,9 +862,43 @@ Not for the rest of the night.
 
 = logan
 
+Miraculously, Logan actually picks up.
+
+"Yuliya?"
+
+You start sobbing, spilling everything immediately. 
+
+He listens to your incoherence with incredible ease, and pauses for a moment before responding. 
+
+"Do you think you need to go to the hospital?"
+
 // Logan: if you refuse to go to the hospital, keeps an eye on you all night long, until the lights go away in the morning and you feel better. Encourages you to go to a doctor the next day anyway (DOCTOR ENDING)
 
 * [Let Logan take you to the hospital]
+
+You hesitate. "Maybe, I mean, probably."
+
+You don't hear anything for a moment, but then Logan starts speaking again. "I'll go with you. Is that okay?"
+
+It's more than okay. "Yes."
+
+"Where are you now? I'll find you."
+
+You look for the nearest street sign, and give him the crossing. 
+
+"Okay. I'm on my way. I'll stay on the phone though, so don't hang up."
+
+You stay on the phone, waiting for him to walk over. 
+
+Once you see him, he takes the phone from his ear and hangs up, then runs over to you. "Are you okay?"
+
+You nod, but don't say anything.
+
+"Okay. Let's go to the hospital."
+
+You both walk to the hospital together. Once you're there, Logan helps you explain the situation, and you're immediately let in. 
+
+You also, sadly, miss the quiz.
 
 // hospitalization ending. you miss the quiz :(
 
@@ -872,31 +906,168 @@ Not for the rest of the night.
 
 * [Refuse to go to the hospital]
 
+"No, I don't want to," you insist. 
+
+You can hear Logan sigh through the phone. "Are you sure?"
+
+You nod, but then say "yes" as soon as you realize that he can't see you. 
+
+"Okay."
+
+A long silence passes. 
+
+"Do you need help getting home?"
+
+You don't actually think so, but maybe some company would be nice.
+
+"Probably," you respond. 
+
+"Where are you now? I'll find you."
+
+You look for the nearest street sign, and give him the crossing. 
+
+"Okay. I'm on my way. I'll stay on the phone though, so don't hang up."
+
+You stay on the phone, waiting for him to walk over. 
+
+Once you see him, he takes the phone from his ear and hangs up, then runs over to you. "Are you okay?"
+
+You nod, but don't say anything.
+
+"Okay. That's good. Let's go home."
+
+You both walk towards your dorm.
+
+"I'm really worried about you," Logan says. "I really do think you need to go to the hospital."
+
+"But I don't want--"
+
+"I know," Logan says. "I won't force you. But I'm scared that you might do something during the night."
+
+You look at the ground. 
+
+"How about this," Logan begins. "I don't have anything important going on tomorrow. I could stay over, or maybe just stay on the phone -- I think staying on the phone would be better, actually. I can keep watch -- er, listen -- and make sure you don't do anything over the night. But then tomorrow, when you wake up, you have to go to the doctor or the emergency after-hours at the counseling center or something. Can we do that?"
+
+** "Are you sure?"
+
+You feel incredibly bad about the possibility. 
+
+"I'm sure," Logan says. "It won't be a big deal. I promise."
+
+You wait for a minute.
+
+*** "Okay."
+
+"Okay," Logan repeats. "Let's do that, then."
+
+It's surprisingly easy, falling asleep that night with Logan on the phone.
+
+The next morning, you thank him for staying up for you, and go to the doctor. 
+
+** "No, it's okay. I'll be safe."
+
+"Are you sure?" Logan asks. "I want to believe you, I really do, but..."
+
+"I'll be fine. I promise. I'll go to the doctor or something tomorrow."
+
+Logan pauses to think.
+
+"Alright," he concedes. "But I don't know what I would do with myself if something were to happen to you. You have to promise."
+
+*** "I promise."
+
+"Okay. I trust you," he says. And once you reach your dorm, he leaves. 
+
+The next morning, you fulfill your promise.
+
+- The doctor also wants you to go to the hospital, but you somehow manage to convince them to not take you. Instead, you are prescribed a low dose of antipsychotics. For the rest of the day, you study. After all, your quiz is tomorrow. 
+
 // doctor ending
 
 -> quiz_5
 
 = eugenia 
 
-// Eugenia: waits until you get home, says that she'll be there, and then immediately calls police (HOSPITALIZATION ENDING)
+// Eugenia waits until you get home, says that she'll be there, and then immediately calls police (HOSPITALIZATION ENDING)
+
+Luckily, Eugenia actually picks up.
+
+"Yuliya?"
+
+You start sobbing, spilling everything immediately. 
+
+She listens to your incoherence, asks some clarifying questions, and then pauses for a moment before responding. 
+
+"Can you get home?"
+
+You nod, before realizing that she can't exactly see you nod and instad say: "Yes."
+
+"Okay, go home then. I'll be there soon." She hangs up.
+
+You walk home, but you don't see her there. Maybe she's late. You put the medications you bought into a drawer and sit in your bed, waiting. 
 
 -> police 
 
 = abraham 
 
-// Abraham: waits until you get home, convinces you to go to hospital on your own or via police (HOSPITALIZATION ENDING)
+// Abraham waits until you get home, convinces you to go to hospital on your own or via police (HOSPITALIZATION ENDING)
+
+Luckily, Abraham actually picks up.
+
+"Yuliya?"
+
+You start sobbing, spilling everything immediately. 
+
+He listens to your incoherence with incredible ease, and pauses for a moment before responding. 
+
+"Where are you now? I'll pick you up."
+
+You look for the nearest street sign, and give him the crossing. 
+
+Ten minutes later, you see his car pull up to you, and you get in. 
+
+Once you're in, the car doesn't move. 
+
+"I want to go home," you say.
+
+"I think you need to go to the hospital," Abraham responds. 
 
 * [Let Abraham take you to the hospital]
+
+You think, for a long moment. 
+
+** "Okay."
+
+Abraham takes you to the hospital, and after explaining what happened, you are let in immediately. 
+
+You also, sadly, miss the quiz. 
 // hospitalization ending, you miss the quiz :(
 -> semester_over
 
 * [Refuse to go to the hospital]
+
+"No I don't want to," you blurt out. 
+
+"I really think you need to," Abraham insists.
+
+"No."
+
+"Okay," he relents. "I'm taking you home then."
+
+You breathe a sigh of relief as the car starts moving. 
+
+"Thank you."
+
+Abraham takes you home and watches you walk in. 
+
+You collapse onto your bed and fall asleep. 
+
 -> police 
 
 == police ==
 
 // the police come, and you are forcibly hospitalized 
-You hear the sound of knocking at your door. 
+About an hour later, you hear the sound of knocking at your door. 
 
 * [Open the door]
 -> open
